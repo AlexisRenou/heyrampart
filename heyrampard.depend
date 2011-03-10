@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1297339509 source:c:\users\mitch\projets\heyrampard\main.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstdlib>
+	<time.h>
+

@@ -183,10 +183,10 @@ int main()
     // le carre de 4 case   **
     //
 
-    carre.AddPoint(0,0,Color(100,100,100));
-    carre.AddPoint(0,40,Color(100,100,100));
-    carre.AddPoint(40,40,Color(100,100,100));
-    carre.AddPoint(40,0,Color(100,100,100));
+    carre.AddPoint(0,0);
+    carre.AddPoint(0,40);
+    carre.AddPoint(40,40);
+    carre.AddPoint(40,0);
     carre.SetColor(Color(100,100,100,100));
 
 
@@ -208,14 +208,13 @@ int main()
     // le L2        ****
     //
 
-    L2.AddPoint(0,20,Color(100,100,100));
-    L2.AddPoint(0,40,Color(100,100,100));
-    L2.AddPoint(20,40,Color(100,100,100));
-    L2.AddPoint(20,60,Color(100,100,100));
-    L2.AddPoint(40,60,Color(100,100,100));
-    L2.AddPoint(40,40,Color(100,100,100));
-    L2.AddPoint(60,40,Color(100,100,100));
-    L2.AddPoint(60,20,Color(100,100,100));
+    L2.AddPoint(0,20);
+    L2.AddPoint(0,40);
+    L2.AddPoint(80,40);
+    L2.AddPoint(80,00);
+    L2.AddPoint(60,00);
+    L2.AddPoint(60,20);
+    L2.SetColor(Color(100,100,100,100));
     L2.SetCenter(20,20);
 
 
@@ -295,7 +294,7 @@ int main()
             {
                 MAJTableau(forme, input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
                 ClicGauche = 1;                                             // On passe la variable à appuyé
-                forme = Aleatoire(0,7);                                     // On récupère une forme aléatoire
+                forme = Aleatoire(0,8);                                     // On récupère une forme aléatoire
             }
         }else
         {
@@ -343,6 +342,13 @@ void AfficherForme(int NumeroForme, int MouseX, int MouseY)
 {
     switch(NumeroForme)
     {
+        case 8:
+
+            L2.SetPosition((MouseX/20)*20,(MouseY/20)*20);
+            app.Draw(L2);
+
+            break;
+
         case 7:
 
             L1.SetPosition((MouseX/20)*20,(MouseY/20)*20);
@@ -408,6 +414,16 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
 {
     switch(NumeroForme)
     {
+         case 8:
+
+            tableau[(MouseX/20)+2][(MouseY/20)-1] = 1;
+            tableau[(MouseX/20)+2][MouseY/20] = 1;
+            tableau[(MouseX/20)-1][MouseY/20] = 1;
+            tableau[(MouseX/20)+1][MouseY/20] = 1;
+            tableau[MouseX/20][MouseY/20] = 1;
+
+            break;
+
         case 7:
 
             tableau[MouseX/20][(MouseY/20)-2] = 1;
