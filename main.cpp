@@ -5,7 +5,7 @@ using namespace sf;
 
 int main()
 {
-    RenderWindow app(VideoMode(800, 600, 32), "Hey rampart le jeu de ouf ! ");
+    RenderWindow app(VideoMode(800, 600, 32), "Hey rampart le jeu de Zouf ! ");
 
     // Boucle principale
     while (app.IsOpened())
