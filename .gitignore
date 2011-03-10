@@ -1,3 +1,4 @@
 main.exe
 bin/*
-obj/*
+obj/*/*
+heyrampard.depend
