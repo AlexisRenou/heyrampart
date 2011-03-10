@@ -18,7 +18,7 @@
 
 #include "case.hpp"
 #include "plateau.hpp"
-
+#include "constantes.hpp"
 //******************
 //* Les namespaces *
 //******************
@@ -51,7 +51,7 @@ Shape L1;
 Shape L2;
 Shape L3;
 Shape L4;
-int tableau[40][40];
+int tableau[80][80];
 
 
 //**************************
@@ -73,9 +73,9 @@ int main()
 
     // On initialise le plateau du jeu
 
-    for(i=0;i<40;i++)
+    for(i=0;i<80;i++)
     {
-        for(j=0;j<40;j++)
+        for(j=0;j<80;j++)
         {
             tableau[i][j] = 0;
         }
@@ -303,9 +303,9 @@ int main()
             ClicGauche = 0; // On passe la variable à non-appuyé
         }
 
-        for(i=0;i < 40;i++)
+        for(i=0;i < 80;i++)
         {
-            for(j=0;j < 40;j++)
+            for(j=0;j < 80;j++)
             {
                 if(tableau[i][j] == 1)
                 {
