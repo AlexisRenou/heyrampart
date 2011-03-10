@@ -1,8 +1,8 @@
-//*******************************
-//* RAMPART - DEFEND THE CASTEL *
-//*                             *
-//* Auteur : Mitch              *
-//*******************************
+//***************************************************
+//* RAMPART - DEFEND THE CASTEL                     *
+//*                                                 *
+//* Auteur : Mitch, Antoine, Zouf, Mandarine & Djow *
+//***************************************************
 
 
 
@@ -58,8 +58,7 @@ Shape L4;
 <<<<<<< HEAD
 =======
 */
-int tableau[60][60];
-
+Plateau tableau;
 
 //**************************
 //* La fonction principale *

@@ -16,16 +16,16 @@ forme::forme(int x)
         // le L4        ****
         //              *
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,40);
-        Forme.AddPoint(60,40);
-        Forme.AddPoint(60,20);
-        Forme.AddPoint(40,20);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -35,16 +35,16 @@ forme::forme(int x)
         // le L3          *
         //                *
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,20);
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(20,40);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -54,14 +54,14 @@ forme::forme(int x)
         // le L2        ****
         //
 
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(80,40);
-        Forme.AddPoint(80,00);
-        Forme.AddPoint(60,00);
-        Forme.AddPoint(60,20);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 4,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 4,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -71,14 +71,14 @@ forme::forme(int x)
         // le L1          *
         //                **
 
-        Forme.AddPoint(0,0);
-        Forme.AddPoint(0,80);
-        Forme.AddPoint(40,80);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(20,0);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 4);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 4);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(0,60);
+        Forme.SetCenter(TAILLE_CASE * 0,TAILLE_CASE * 3);
 
         break;
 
@@ -88,10 +88,10 @@ forme::forme(int x)
         // le carre de 4 case   **
         //
 
-        Forme.AddPoint(0,0);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(40,40);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
 
         break;
@@ -102,16 +102,16 @@ forme::forme(int x)
         // le T4          **
         //                *
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,40);
-        Forme.AddPoint(60,40);
-        Forme.AddPoint(60,20);
-        Forme.AddPoint(40,20);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -121,16 +121,16 @@ forme::forme(int x)
         // le T3         **
         //                *
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,20);
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(20,40);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -139,16 +139,16 @@ forme::forme(int x)
         // le T2         ***
         //                *
 
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(20,40);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,40);
-        Forme.AddPoint(60,40);
-        Forme.AddPoint(60,20);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -158,16 +158,16 @@ forme::forme(int x)
         // le T1         ***
         //
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,20);
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(60,40);
-        Forme.AddPoint(60,20);
-        Forme.AddPoint(40,20);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
@@ -177,20 +177,20 @@ forme::forme(int x)
         // la croix      ***
         //                *
 
-        Forme.AddPoint(20,0);
-        Forme.AddPoint(20,20);
-        Forme.AddPoint(0,20);
-        Forme.AddPoint(0,40);
-        Forme.AddPoint(20,40);
-        Forme.AddPoint(20,60);
-        Forme.AddPoint(40,60);
-        Forme.AddPoint(40,40);
-        Forme.AddPoint(60,40);
-        Forme.AddPoint(60,20);
-        Forme.AddPoint(40,20);
-        Forme.AddPoint(40,0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 3);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 2);
+        Forme.AddPoint(TAILLE_CASE * 3,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 1);
+        Forme.AddPoint(TAILLE_CASE * 2,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(20,20);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
         break;
 
