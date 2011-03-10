@@ -5,12 +5,38 @@
 #include <iostream>
 #include <cstdlib>
 
-forme::forme(float x)
+using namespace sf;
+
+forme::forme(int x)
 {
+
+    switch(x)
+    {
+        case 0:
+
+        //
+        // le block d'une case  *
+        //
+
+        Forme.AddPoint(0,0);
+        Forme.AddPoint(0,10);
+        Forme.AddPoint(10,10);
+        Forme.AddPoint(10,0);
+        Forme.SetColor(Color(100,100,100,100));
+
+        break;
+    }
+
     IdForme = x;
 }
 
 int forme::GetIdForme(void)
 {
-    return Idforme;
+    return IdForme;
+}
+
+sf::Shape forme::GetForme(int a, int b)
+{
+    Forme.SetPosition(a,b);
+    return Forme;
 }

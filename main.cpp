@@ -12,12 +12,11 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include "forme.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
 
-#include "case.hpp"
-#include "plateau.hpp"
 
 //******************
 //* Les namespaces *
@@ -41,6 +40,7 @@ int Aleatoire(int min, int max);
 
 RenderWindow app(VideoMode(800, 800, 32), "Rampard ! ! !");
 Shape block;
+/*
 Shape croix;
 Shape T1;
 Shape T2;
@@ -51,7 +51,8 @@ Shape L1;
 Shape L2;
 Shape L3;
 Shape L4;
-int tableau[40][40];
+*/
+int tableau[80][80];
 
 
 //**************************
@@ -66,16 +67,18 @@ int main()
     //********************************************************
 
 
+    forme test = forme(0);
+
     srand(time(NULL)); // On initialise le random
 
 
-    int i=0, j=0, ClicGauche=0, forme=0; // Quelques variables necessaires par la suite
+    int i=0, j=0, ClicGauche=0; // Quelques variables necessaires par la suite
 
     // On initialise le plateau du jeu
 
-    for(i=0;i<40;i++)
+    for(i=0;i<80;i++)
     {
-        for(j=0;j<40;j++)
+        for(j=0;j<80;j++)
         {
             tableau[i][j] = 0;
         }
@@ -89,12 +92,13 @@ int main()
     // le block d'une case  *
     //
 
-    block.AddPoint(0,0,Color(100,100,100));
-    block.AddPoint(0,20,Color(100,100,100));
-    block.AddPoint(20,20,Color(100,100,100));
-    block.AddPoint(20,0,Color(100,100,100));
+    block.AddPoint(0,0);
+    block.AddPoint(0,15);
+    block.AddPoint(15,15);
+    block.AddPoint(15,0);
     block.SetColor(Color(100,100,100,100));
 
+    /*
 
     //                *
     // la croix      ***
@@ -249,6 +253,7 @@ int main()
     L4.AddPoint(40,0,Color(100,100,100));
     L4.SetCenter(20,20);
 
+    */
 
 
     app.SetFramerateLimit(200); // On limite le nombre d'image par seconde
@@ -294,22 +299,23 @@ int main()
         {
             if(ClicGauche==0) // On vérifie si le bouton gauche est déjà enfoncé
             {
-                MAJTableau(forme, input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
+                MAJTableau(test.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
                 ClicGauche = 1;                                             // On passe la variable à appuyé
-                forme = Aleatoire(0,8);                                     // On récupère une forme aléatoire
+                //forme = Aleatoire(0,8);                                     // On récupère une forme aléatoire
+
             }
         }else
         {
             ClicGauche = 0; // On passe la variable à non-appuyé
         }
 
-        for(i=0;i < 40;i++)
+        for(i=0;i < 80;i++)
         {
-            for(j=0;j < 40;j++)
+            for(j=0;j < 80;j++)
             {
                 if(tableau[i][j] == 1)
                 {
-                    block.SetPosition(i*20,j*20);
+                    block.SetPosition(i*10,j*10);
                     block.SetColor(Color(100,100,100));
                     app.Draw(block);
                     block.SetColor(Color(100,100,100,100));
@@ -318,9 +324,10 @@ int main()
             j=0;
         }
 
-        if(tableau[input.GetMouseX()/20][input.GetMouseY()/20] == 0)
+        if(tableau[input.GetMouseX()/10][input.GetMouseY()/10] == 0)
         {
-            AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
+            //AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
+            app.Draw(test.GetForme((input.GetMouseX()/10)*10,(input.GetMouseY()/10)*10));
         }
 
 
@@ -338,7 +345,7 @@ int main()
 //* Les fonctions secondaires *
 //*****************************
 
-
+/*
 
 void AfficherForme(int NumeroForme, int MouseX, int MouseY)
 {
@@ -410,7 +417,7 @@ void AfficherForme(int NumeroForme, int MouseX, int MouseY)
     }
 }
 
-
+*/
 
 void MAJTableau(int NumeroForme, int MouseX, int MouseY)
 {
