@@ -7,11 +7,12 @@
 #include <cstdlib>
 #include <time.h>
 #include "case.hpp"
+#include "constantes.hpp"
 
 class Plateau
 {
     private:
-    Square p_square[100][100];
+    Square p_square[LONGUEUR_PLATEAU][LONGUEUR_PLATEAU];
 
     public:
     Plateau();
