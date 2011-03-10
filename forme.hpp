@@ -22,7 +22,7 @@ class forme
     forme(int x=0);
     int GetIdForme(void);
     sf::Shape GetForme(int a, int b);
-    //void DessinerForme(void);
+    void DessinerForme(int a);
 
 
 };
