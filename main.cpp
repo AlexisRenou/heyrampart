@@ -73,6 +73,7 @@ int main()
     //********************************************************
 
 
+    forme test = forme(0);
 
     srand(time(NULL)); // On initialise le random
 
