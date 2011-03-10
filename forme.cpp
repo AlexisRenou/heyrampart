@@ -19,9 +19,9 @@ forme::forme(int x)
         //
 
         Forme.AddPoint(0,0);
-        Forme.AddPoint(0,10);
-        Forme.AddPoint(10,10);
-        Forme.AddPoint(10,0);
+        Forme.AddPoint(0,15);
+        Forme.AddPoint(15,15);
+        Forme.AddPoint(15,0);
         Forme.SetColor(Color(100,100,100,100));
 
         break;

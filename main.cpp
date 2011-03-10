@@ -38,7 +38,7 @@ int Aleatoire(int min, int max);
 //* Les variables globales *
 //**************************
 
-RenderWindow app(VideoMode(800, 800, 32), "Rampard ! ! !");
+RenderWindow app(VideoMode(900, 900, 32), "Rampard ! ! !");
 Shape block;
 /*
 Shape croix;
@@ -52,7 +52,7 @@ Shape L2;
 Shape L3;
 Shape L4;
 */
-int tableau[80][80];
+int tableau[60][60];
 
 
 //**************************
@@ -76,9 +76,9 @@ int main()
 
     // On initialise le plateau du jeu
 
-    for(i=0;i<80;i++)
+    for(i=0;i<60;i++)
     {
-        for(j=0;j<80;j++)
+        for(j=0;j<60;j++)
         {
             tableau[i][j] = 0;
         }
@@ -309,13 +309,13 @@ int main()
             ClicGauche = 0; // On passe la variable à non-appuyé
         }
 
-        for(i=0;i < 80;i++)
+        for(i=0;i < 60;i++)
         {
-            for(j=0;j < 80;j++)
+            for(j=0;j < 60;j++)
             {
                 if(tableau[i][j] == 1)
                 {
-                    block.SetPosition(i*10,j*10);
+                    block.SetPosition(i*15,j*15);
                     block.SetColor(Color(100,100,100));
                     app.Draw(block);
                     block.SetColor(Color(100,100,100,100));
@@ -324,10 +324,10 @@ int main()
             j=0;
         }
 
-        if(tableau[input.GetMouseX()/10][input.GetMouseY()/10] == 0)
+        if(tableau[input.GetMouseX()/15][input.GetMouseY()/15] == 0)
         {
             //AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
-            app.Draw(test.GetForme((input.GetMouseX()/10)*10,(input.GetMouseY()/10)*10));
+            app.Draw(test.GetForme((input.GetMouseX()/15)*15,(input.GetMouseY()/15)*15));
         }
 
 
@@ -500,7 +500,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
 
         case 0:
 
-            tableau[MouseX/20][MouseY/20] = 1;
+            tableau[MouseX/15][MouseY/15] = 1;
 
             break;
     }

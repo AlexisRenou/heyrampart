@@ -36,3 +36,15 @@
 1299779230 source:c:\users\aereivir\documents\projet\heyrampart\heyrampart\case.cpp
 	"case.hpp"
 
+1299786141 source:c:\users\mitch\projet rampart\heyrampart\main.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	"forme.hpp"
+	<iostream>
+	<cstdlib>
+	<time.h>
+
+1299785021 c:\users\mitch\projet rampart\heyrampart\forme.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+
