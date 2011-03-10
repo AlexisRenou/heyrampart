@@ -16,6 +16,8 @@
 #include <cstdlib>
 #include <time.h>
 
+#include "case.hpp"
+#include "plateau.hpp"
 
 //******************
 //* Les namespaces *
