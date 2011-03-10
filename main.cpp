@@ -17,6 +17,10 @@
 #include <cstdlib>
 #include <time.h>
 
+#include "case.hpp"
+#include "plateau.hpp"
+#include "constantes.hpp"
+
 
 //******************
 //* Les namespaces *
@@ -51,6 +55,8 @@ Shape L1;
 Shape L2;
 Shape L3;
 Shape L4;
+<<<<<<< HEAD
+=======
 */
 int tableau[60][60];
 
