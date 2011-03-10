@@ -2,7 +2,9 @@
 #define FORME_HPP_INCLUDED
 
 
-
+#include <iostream>
+#include <cstdlib>
+#include "constantes.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 

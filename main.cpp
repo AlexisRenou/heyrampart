@@ -73,7 +73,7 @@ int main()
     //********************************************************
 
 
-    forme test = forme(0);
+    forme test = forme(Aleatoire(0,10));
 
     srand(time(NULL)); // On initialise le random
 
@@ -306,8 +306,9 @@ int main()
             if(ClicGauche==0) // On vérifie si le bouton gauche est déjà enfoncé
             {
                 MAJTableau(test.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
-                ClicGauche = 1;                                             // On passe la variable à appuyé
-                //forme = Aleatoire(0,8);                                     // On récupère une forme aléatoire
+                ClicGauche = 1;                                                         // On passe la variable à appuyé
+                test = NULL;
+                forme test = forme(Aleatoire(0,10));                                    // On récupère une forme aléatoire
 
             }
         }else

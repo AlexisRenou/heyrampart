@@ -39,23 +39,60 @@
 1299779230 source:c:\users\aereivir\documents\projet\heyrampart\heyrampart\case.cpp
 	"case.hpp"
 
-<<<<<<< HEAD
-1299786141 source:c:\users\mitch\projet rampart\heyrampart\main.cpp
+1299779230 D
+
+1299791686 source:c:\users\mitch\projet rampart\heyrampart\main.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	"forme.hpp"
 	<iostream>
 	<cstdlib>
 	<time.h>
+	"case.hpp"
+	"plateau.hpp"
+	"constantes.hpp"
 
-1299785021 c:\users\mitch\projet rampart\heyrampart\forme.hpp
+1299788222 c:\users\mitch\projet rampart\heyrampart\forme.hpp
+	<iostream>
+	<cstdlib>
+	"constantes.hpp"
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
-=======
+
+1299785021 hics.hpp>
+
 1299786577 c:\users\aereivir\documents\projet\heyrampart\heyrampart\forme.hpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 
 1299786497 c:\users\aereivir\documents\projet\heyrampart\heyrampart\constantes.hpp
->>>>>>> 127202da4b788fcf52881d54388337c5e935321e
+
+1299786497 202da4b788fcf52881d54388337c5e935321e
+
+1299787050 c:\users\mitch\projet rampart\heyrampart\constantes.hpp
+
+1299787050 c:\users\mitch\projet rampart\heyrampart\case.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstdlib>
+	<time.h>
+
+1299787495 c:\users\mitch\projet rampart\heyrampart\plateau.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<cstdlib>
+	<time.h>
+	"case.hpp"
+	"constantes.hpp"
+
+1299787495 source:c:\users\mitch\projet rampart\heyrampart\plateau.cpp
+	"plateau.hpp"
+
+1299787050 source:c:\users\mitch\projet rampart\heyrampart\case.cpp
+	"case.hpp"
+
+1299792339 source:c:\users\mitch\projet rampart\heyrampart\forme.cpp
+	"forme.hpp"
 
