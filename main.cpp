@@ -67,7 +67,6 @@ forme test = forme(Aleatoire(0,8));
 
 int main()
 {
-
     Image image;
     Sprite sprite;
 
