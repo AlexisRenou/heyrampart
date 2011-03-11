@@ -74,7 +74,6 @@ int main()
 {
     Timer timer;
     tableau.creer_types();
-    tableau.afficher_plateau();
 
     Font font;
     String text;
@@ -88,11 +87,12 @@ int main()
         text.SetColor(Color::Red);
         text.SetSize(FONT_SIZE);
     }
-
+    Image chato;
     Image image;
     Image mur;
     Sprite sprite;
     Sprite Mursprite;
+    Sprite chatosprite;
 
     if (!image.LoadFromFile("images/carte.png")) // Si le chargement du fichier a échoué
     {
@@ -102,6 +102,17 @@ int main()
     {
         sprite.SetImage(image);
     }
+
+    if (!chato.LoadFromFile("images/chato.png")) // Si le chargement du fichier a échoué
+    {
+        return EXIT_FAILURE; // On ferme le programme
+    }
+    else // Si le chargement de l'image a réussi
+    {
+        chatosprite.SetImage(chato);
+    }
+
+
     if (!mur.LoadFromFile("images/rampart.png")) // Si le chargement du fichier a échoué
     {
         return EXIT_FAILURE; // On ferme le programme
@@ -173,7 +184,7 @@ int main()
 
         text.SetText(nb2String((int)timer.GetTime()));
         text.SetPosition(1000, 100);
-
+        chatosprite.SetPosition(330, 270);
         app.Clear(Color(0,255,0));                  // On colore le fond de la fenêtre en vert
 
         const Input & input = app.GetInput();       // input : référence constante
@@ -195,6 +206,8 @@ int main()
 
         app.Draw(text);
         app.Draw(sprite);
+        app.Draw(chatosprite);
+
         for (int i=0 ; i<LONGUEUR_PLATEAU ; i++)
         {
             for (int j = 0 ; j<LONGUEUR_PLATEAU ; j++)
