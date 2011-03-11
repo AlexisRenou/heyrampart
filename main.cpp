@@ -213,7 +213,28 @@ int main()
         //if(tableau[input.GetMouseX()/15][input.GetMouseY()/15] == 0)
         //{
             //AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
-            app.Draw(test.GetForme((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            //app.Draw(test.GetForme((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+
+            if(test.IsRampart1())
+            {
+                app.Draw(test.GetRampart1((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            }
+            if(test.IsRampart2())
+            {
+                app.Draw(test.GetRampart2((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            }
+            if(test.IsRampart3())
+            {
+                app.Draw(test.GetRampart3((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            }
+            if(test.IsRampart4())
+            {
+                app.Draw(test.GetRampart4((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            }
+            if(test.IsRampart5())
+            {
+                app.Draw(test.GetRampart5((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            }
         //}
 
 
@@ -250,7 +271,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -268,7 +289,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -286,7 +307,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -304,7 +325,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -319,7 +340,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -334,7 +355,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -349,7 +370,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -364,7 +385,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -379,7 +400,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -396,7 +417,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -405,7 +426,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
     }
