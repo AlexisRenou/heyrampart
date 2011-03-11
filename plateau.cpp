@@ -11,9 +11,52 @@ Plateau::Plateau()
             p_square[i][j].modifier_tout(i, j, "terre", false);
         }
     }
-
-// Zone de la Foret, Inconstructible
+}
+void Plateau::creer_types()
+{
+    // Zone de la Foret, Inconstructible
     for (int i=0 ; i<15 ; i++)
+    {
+        for (int j=0 ; j<5 ; j++)
+        {
+            p_square[i][j].modifier_type("foret");
+        }
+    }
+        for (int i=0 ; i<12 ; i++)
+    {
+        for (int j=5 ; j<8 ; j++)
+        {
+            p_square[i][j].modifier_type("foret");
+        }
+    }
+        for (int i=0 ; i<7 ; i++)
+    {
+        for (int j=8 ; j<11 ; j++)
+        {
+            p_square[i][j].modifier_type("foret");
+        }
+    }
+        for (int i=0 ; i<2 ; i++)
+    {
+        for (int j=11 ; j<13 ; j++)
+        {
+            p_square[i][j].modifier_type("foret");
+        }
+    }
+    p_square[12][5].modifier_type("foret");
+    p_square[13][5].modifier_type("foret");
+    p_square[7][8].modifier_type("foret");
+    p_square[8][8].modifier_type("foret");
+    p_square[9][8].modifier_type("foret");
+    p_square[7][9].modifier_type("foret");
+    p_square[2][11].modifier_type("foret");
+    p_square[3][11].modifier_type("foret");
+    p_square[0][13].modifier_type("foret");
+}
+
+void Plateau::afficher_plateau()
+{
+    for (int i=0 ; i<LONGUEUR_PLATEAU ; i++)
     {
         for (int j=0 ; j<5 ; j++)
         {
