@@ -1,6 +1,6 @@
 #include "Timer.hpp"
 
-Timer::Timer() : myElapsedTime(5), myState(Paused)
+Timer::Timer() : myElapsedTime(15), myState(Paused)
 {}
 
 void Timer::Start()
@@ -36,19 +36,12 @@ float Timer::GetTime()
     {
         time = myElapsedTime;
     }
+
     else
     {
-        if (myElapsedTime == 1)
-        {
-            myState = Paused;
-            myElapsedTime -= myClock.GetElapsedTime();
-            time = 4;
-        }
-        else
-        {
-            time = myElapsedTime - myClock.GetElapsedTime();
-        }
+        time = myElapsedTime - myClock.GetElapsedTime();
     }
+
 
     return time;
 }
