@@ -20,6 +20,8 @@ class Square
     Square();
     void modifier_tout(int posx, int posy, std::string type, bool occupe);
     void afficher_tout();
+    bool verifier_occupe();
+    void modifier_occuper();
 };
 
 

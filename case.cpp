@@ -25,3 +25,13 @@ void Square::afficher_tout()
 {
     cout << s_posx << " " << s_posy << " " << s_type << " " << s_occupe;
 }
+
+bool Square::verifier_occupe()
+{
+    return s_occupe;
+}
+
+void Square::modifier_occuper()
+{
+    s_occupe = true;
+}
