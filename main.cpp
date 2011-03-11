@@ -33,7 +33,6 @@ using namespace sf;
 //* Les prototypes des fonctions *
 //********************************
 
-void AfficherForme(int NumeroForme, int MouseX, int MouseY);
 void MAJTableau(int NumeroForme, int MouseX, int MouseY);
 int Aleatoire(int min, int max);
 
@@ -44,22 +43,8 @@ int Aleatoire(int min, int max);
 
 RenderWindow app(VideoMode(900, 900, 32), "Rampard ! ! !");
 Shape block;
-/*
-Shape croix;
-Shape T1;
-Shape T2;
-Shape T3;
-Shape T4;
-Shape carre;
-Shape L1;
-Shape L2;
-Shape L3;
-Shape L4;
-<<<<<<< HEAD
-=======
-*/
 Plateau tableau;
-forme test = forme(Aleatoire(0,8));
+forme test = forme(Aleatoire(0,10));
 
 //**************************
 //* La fonction principale *
@@ -69,7 +54,9 @@ int main()
 {
 
     Image image;
+    Image mur;
     Sprite sprite;
+    Sprite Mursprite;
 
     if (!image.LoadFromFile("images/carte.png")) // Si le chargement du fichier a échoué
     {
@@ -79,6 +66,14 @@ int main()
     {
         sprite.SetImage(image);
     }
+    if (!mur.LoadFromFile("images/rampart.png")) // Si le chargement du fichier a échoué
+    {
+        return EXIT_FAILURE; // On ferme le programme
+    }
+    else // Si le chargement de l'image a réussi
+    {
+        Mursprite.SetImage(mur);
+    }
     sprite.Resize(900, 900);
 
     //********************************************************
@@ -86,23 +81,10 @@ int main()
     //********************************************************
 
 
-    //forme test = forme(Aleatoire(0,10));
-
     srand(time(NULL)); // On initialise le random
 
 
     int i=0, j=0, ClicGauche=0; // Quelques variables necessaires par la suite
-
-    // On initialise le plateau du jeu
-
-    /*for(i=0;i<60;i++)
-    {
-        for(j=0;j<60;j++)
-        {
-            tableau[i][j] = 0;
-        }
-        j=0;
-    }*/
 
 
     // On initialise les différentes formes, (on trace les formes)
@@ -116,163 +98,6 @@ int main()
     block.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
     block.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
     block.SetColor(Color(100,100,100,100));
-
-    /*
-
-    //                *
-    // la croix      ***
-    //                *
-
-    croix.AddPoint(TAILLE_CASE,0,Color(100,100,100));
-    croix.AddPoint(20,20,Color(100,100,100));
-    croix.AddPoint(0,20,Color(100,100,100));
-    croix.AddPoint(0,40,Color(100,100,100));
-    croix.AddPoint(20,40,Color(100,100,100));
-    croix.AddPoint(20,60,Color(100,100,100));
-    croix.AddPoint(40,60,Color(100,100,100));
-    croix.AddPoint(40,40,Color(100,100,100));
-    croix.AddPoint(60,40,Color(100,100,100));
-    croix.AddPoint(60,20,Color(100,100,100));
-    croix.AddPoint(40,20,Color(100,100,100));
-    croix.AddPoint(40,0,Color(100,100,100));
-    croix.SetColor(Color(100,100,100,100));
-    croix.SetCenter(20,20);
-
-
-
-    //                *
-    // le T1         ***
-    //
-
-    T1.AddPoint(20,0,Color(100,100,100));
-    T1.AddPoint(20,20,Color(100,100,100));
-    T1.AddPoint(0,20,Color(100,100,100));
-    T1.AddPoint(0,40,Color(100,100,100));
-    T1.AddPoint(60,40,Color(100,100,100));
-    T1.AddPoint(60,20,Color(100,100,100));
-    T1.AddPoint(40,20,Color(100,100,100));
-    T1.AddPoint(40,0,Color(100,100,100));
-    T1.SetColor(Color(100,100,100,100));
-    T1.SetCenter(20,20);
-
-
-    //
-    // le T2         ***
-    //                *
-
-    T2.AddPoint(0,20,Color(100,100,100));
-    T2.AddPoint(0,40,Color(100,100,100));
-    T2.AddPoint(20,40,Color(100,100,100));
-    T2.AddPoint(20,60,Color(100,100,100));
-    T2.AddPoint(40,60,Color(100,100,100));
-    T2.AddPoint(40,40,Color(100,100,100));
-    T2.AddPoint(60,40,Color(100,100,100));
-    T2.AddPoint(60,20,Color(100,100,100));
-    T2.SetColor(Color(100,100,100,100));
-    T2.SetCenter(20,20);
-
-
-    //                *
-    // le T3         **
-    //                *
-
-    T3.AddPoint(20,0,Color(100,100,100));
-    T3.AddPoint(20,20,Color(100,100,100));
-    T3.AddPoint(0,20,Color(100,100,100));
-    T3.AddPoint(0,40,Color(100,100,100));
-    T3.AddPoint(20,40,Color(100,100,100));
-    T3.AddPoint(20,60,Color(100,100,100));
-    T3.AddPoint(40,60,Color(100,100,100));
-    T3.AddPoint(40,0,Color(100,100,100));
-    T3.SetColor(Color(100,100,100,100));
-    T3.SetCenter(20,20);
-
-
-    //                *
-    // le T4          **
-    //                *
-
-    T4.AddPoint(20,0,Color(100,100,100));
-    T4.AddPoint(20,60,Color(100,100,100));
-    T4.AddPoint(40,60,Color(100,100,100));
-    T4.AddPoint(40,40,Color(100,100,100));
-    T4.AddPoint(60,40,Color(100,100,100));
-    T4.AddPoint(60,20,Color(100,100,100));
-    T4.AddPoint(40,20,Color(100,100,100));
-    T4.AddPoint(40,0,Color(100,100,100));
-    T4.SetColor(Color(100,100,100,100));
-    T4.SetCenter(20,20);
-
-
-    //                      **
-    // le carre de 4 case   **
-    //
-
-    carre.AddPoint(0,0);
-    carre.AddPoint(0,40);
-    carre.AddPoint(40,40);
-    carre.AddPoint(40,0);
-    carre.SetColor(Color(100,100,100,100));
-
-
-    //                *
-    // le L1          *
-    //                **
-
-    L1.AddPoint(0,0);
-    L1.AddPoint(0,80);
-    L1.AddPoint(40,80);
-    L1.AddPoint(40,60);
-    L1.AddPoint(20,60);
-    L1.AddPoint(20,0);
-    L1.SetColor(Color(100,100,100,100));
-    L1.SetCenter(0,60);
-
-
-    //                 *
-    // le L2        ****
-    //
-
-    L2.AddPoint(0,20);
-    L2.AddPoint(0,40);
-    L2.AddPoint(80,40);
-    L2.AddPoint(80,00);
-    L2.AddPoint(60,00);
-    L2.AddPoint(60,20);
-    L2.SetColor(Color(100,100,100,100));
-    L2.SetCenter(20,20);
-
-
-    //               **
-    // le L3          *
-    //                *
-
-    L3.AddPoint(20,0,Color(100,100,100));
-    L3.AddPoint(20,20,Color(100,100,100));
-    L3.AddPoint(0,20,Color(100,100,100));
-    L3.AddPoint(0,40,Color(100,100,100));
-    L3.AddPoint(20,40,Color(100,100,100));
-    L3.AddPoint(20,60,Color(100,100,100));
-    L3.AddPoint(40,60,Color(100,100,100));
-    L3.AddPoint(40,0,Color(100,100,100));
-    L3.SetCenter(20,20);
-
-
-    //
-    // le L4        ****
-    //              *
-
-    L4.AddPoint(20,0,Color(100,100,100));
-    L4.AddPoint(20,60,Color(100,100,100));
-    L4.AddPoint(40,60,Color(100,100,100));
-    L4.AddPoint(40,40,Color(100,100,100));
-    L4.AddPoint(60,40,Color(100,100,100));
-    L4.AddPoint(60,20,Color(100,100,100));
-    L4.AddPoint(40,20,Color(100,100,100));
-    L4.AddPoint(40,0,Color(100,100,100));
-    L4.SetCenter(20,20);
-
-    */
 
 
     app.SetFramerateLimit(200); // On limite le nombre d'image par seconde
@@ -329,20 +154,6 @@ int main()
             ClicGauche = 0; // On passe la variable à non-appuyé
         }
 
-        /*for(i=0;i < 60;i++)
-        {
-            for(j=0;j < 60;j++)
-            {
-                if(tableau[i][j] == 1)
-                {
-                    block.SetPosition(i*15,j*15);
-                    block.SetColor(Color(100,100,100));
-                    app.Draw(block);
-                    block.SetColor(Color(100,100,100,100));
-                }
-            }
-            j=0;
-        }*/
         app.Draw(sprite);
         for (int i=0 ; i<LONGUEUR_PLATEAU ; i++)
         {
@@ -350,10 +161,10 @@ int main()
             {
                 if (tableau.colorier_case(i,j))
                 {
-                    block.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
-                    block.SetColor(sf::Color(100,100,100));
-                    app.Draw(block);
-                    block.SetColor(sf::Color(100,100,100,100));
+                    Mursprite.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
+                    //block.SetColor(sf::Color(100,100,100));
+                    app.Draw(Mursprite);
+                    //block.SetColor(sf::Color(100,100,100,100));
                 }
             }
 
@@ -381,85 +192,48 @@ int main()
 //* Les fonctions secondaires *
 //*****************************
 
-/*
-
-void AfficherForme(int NumeroForme, int MouseX, int MouseY)
-{
-    switch(NumeroForme)
-    {
-        case 8:
-
-            L2.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(L2);
-
-            break;
-
-        case 7:
-
-            L1.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(L1);
-
-            break;
-
-        case 6:
-
-            carre.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(carre);
-
-            break;
-
-        case 5:
-
-            T4.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(T4);
-
-            break;
-
-        case 4:
-
-            T3.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(T3);
-
-            break;
-
-        case 3:
-
-            T2.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(T2);
-
-            break;
-
-        case 2:
-
-            T1.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(T1);
-
-            break;
-
-        case 1:
-
-
-            croix.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(croix);
-
-            break;
-
-        case 0:
-
-            block.SetPosition((MouseX/20)*20,(MouseY/20)*20);
-            app.Draw(block);
-
-            break;
-    }
-}
-
-*/
 
 void MAJTableau(int NumeroForme, int MouseX, int MouseY)
 {
     switch(NumeroForme)
     {
-         case 8:
+        case 10:
+            if( tableau.colorier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+                tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+                tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
+                tableau.colorier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1) == false &&
+                tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            {
+
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 9:
+            if(tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+                tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2) == false &&
+                tableau.colorier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE+3) <= LONGUEUR_PLATEAU &&
+                tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
+                tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            {
+
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1);
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 8:
             if(tableau.colorier_case((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1) == false && (MouseX/TAILLE_CASE+3) <= LONGUEUR_PLATEAU && (MouseY/TAILLE_CASE-1) >= 0 &&
                 tableau.colorier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false &&
                 tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
@@ -468,14 +242,12 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             {
 
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1);
-
-
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+                test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -493,7 +265,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -508,7 +280,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -523,7 +295,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -538,7 +310,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -553,7 +325,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -568,7 +340,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -585,7 +357,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -594,7 +366,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DessinerForme(Aleatoire(0,8));  // On récupère une forme aléatoire
+            test.DessinerForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
     }

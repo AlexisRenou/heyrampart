@@ -37,8 +37,9 @@ sf::Shape forme::GetForme(int a, int b)
 void forme::DessinerForme(int a)
 {
     IdForme = a;
+
     switch(a)
-    {/*
+    {
         case 10:
 
         //
@@ -59,7 +60,7 @@ void forme::DessinerForme(int a)
         Forme.SetPointPosition(11, TAILLE_CASE * 0,TAILLE_CASE * 0);
         Forme.SetPointPosition(12, TAILLE_CASE * 0,TAILLE_CASE * 0);
         Forme.SetColor(Color(100,100,100,100));
-        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
+        Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 0);
 
         break;
 
@@ -85,7 +86,7 @@ void forme::DessinerForme(int a)
         Forme.SetColor(Color(100,100,100,100));
         Forme.SetCenter(TAILLE_CASE * 1,TAILLE_CASE * 1);
 
-        break;*/
+        break;
 
         case 8:
 
@@ -282,6 +283,9 @@ void forme::DessinerForme(int a)
         //
         // le block d'une case  *
         //
+
+
+
 
         Forme.SetPointPosition(1, TAILLE_CASE * 0, TAILLE_CASE * 0);
         Forme.SetPointPosition(2, TAILLE_CASE * 0, TAILLE_CASE * 1);
