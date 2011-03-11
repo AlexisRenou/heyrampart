@@ -73,7 +73,8 @@ template <class T> string nb2String(T nb)
 int main()
 {
     Timer timer;
-
+    tableau.creer_types();
+    tableau.afficher_plateau();
 
     Font font;
     String text;
@@ -258,29 +259,29 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
     switch(NumeroForme)
     {
         case 10:
-            if( tableau.colorier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1) == false &&
-                tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            if( tableau.verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1) == false &&
+                tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
             {
 
-                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
-                tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
-                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
-                tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
-                tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
+                tableau.verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+                tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+                tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
                 test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
         case 9:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
-                tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2) == false &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE+3) <= LONGUEUR_PLATEAU &&
-                tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
-                tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+                tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2) == false &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE+3) <= LONGUEUR_PLATEAU &&
+                tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
+                tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
             {
 
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
@@ -294,11 +295,11 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 8:
-            if(tableau.colorier_case((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1) == false && (MouseX/TAILLE_CASE+3) <= LONGUEUR_PLATEAU && (MouseY/TAILLE_CASE-1) >= 0 &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
-                tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
-                tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            if(tableau.verifier_case((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1) == false && (MouseX/TAILLE_CASE+3) <= LONGUEUR_PLATEAU && (MouseY/TAILLE_CASE-1) >= 0 &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
+                tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+                tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
             {
 
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1);
@@ -312,11 +313,11 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 7:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-2) == false &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-3) == false && (MouseY/TAILLE_CASE-3) >= 0 &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-2) == false &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-3) == false && (MouseY/TAILLE_CASE-3) >= 0 &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
             {
 
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-2);
@@ -330,10 +331,10 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 6:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
@@ -345,10 +346,10 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 5:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
@@ -360,10 +361,10 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 4:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
@@ -375,10 +376,10 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 3:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
@@ -390,10 +391,10 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 2:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
@@ -405,11 +406,11 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 1:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
-            tableau.colorier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            tableau.verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
             tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
@@ -422,7 +423,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             break;
 
         case 0:
-            if(tableau.colorier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
+            if(tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 

@@ -27,7 +27,7 @@ void Square::modifier_type(string type)
 
 void Square::afficher_tout()
 {
-    cout << s_posx << " " << s_posy << " " << s_type << " " << s_occupe;
+    cout << s_type << " ";
 }
 
 bool Square::verifier_occupe()
@@ -38,4 +38,9 @@ bool Square::verifier_occupe()
 void Square::modifier_occuper()
 {
     s_occupe = true;
+}
+
+string Square::envoyer_type()
+{
+    return s_type;
 }

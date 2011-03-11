@@ -23,6 +23,7 @@ class Square
     void afficher_tout();
     bool verifier_occupe();
     void modifier_occuper();
+    std::string envoyer_type();
 };
 
 
