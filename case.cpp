@@ -20,6 +20,10 @@ void Square::modifier_tout(int posx, int posy, string type, bool occupe)
     s_occupe = occupe;
 }
 
+void Square::modifier_type(string type)
+{
+    s_type = type;
+}
 
 void Square::afficher_tout()
 {

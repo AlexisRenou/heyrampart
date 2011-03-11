@@ -4,7 +4,8 @@
 //* Auteur : Mitch, Antoine, Zouf, Mandarine & Djow *
 //***************************************************
 
-
+#include <sstream>
+#include "Timer.hpp"
 
 //******************
 //* Les librairies *
@@ -27,6 +28,7 @@
 //******************
 
 using namespace sf;
+using namespace std;
 
 
 //********************************
@@ -41,10 +43,28 @@ int Aleatoire(int min, int max);
 //* Les variables globales *
 //**************************
 
-RenderWindow app(VideoMode(900, 900, 32), "Rampard ! ! !");
+RenderWindow app(VideoMode(1100, 800, 32), "Rampard ! ! !");
 Shape block;
 Plateau tableau;
 forme test = forme(Aleatoire(0,10));
+
+
+//******************************
+//* Fonction de transformation *
+//* de string en nombre        *
+//* pour le chrono             *
+//******************************
+
+const int FONT_SIZE = 80;
+template <class T> string nb2String(T nb)
+{
+    ostringstream s;
+
+    s << nb;
+
+    return s.str();
+}
+
 
 //**************************
 //* La fonction principale *
@@ -52,6 +72,21 @@ forme test = forme(Aleatoire(0,10));
 
 int main()
 {
+    Timer timer;
+
+
+    Font font;
+    String text;
+    if(!font.LoadFromFile("digital-7.ttf", FONT_SIZE)) //, 30.0f))
+    {
+        cerr<<"Erreur durant le chargement de la fonte"<<endl;
+    }
+    else
+    {
+        text.SetFont(font);
+        text.SetColor(Color::Red);
+        text.SetSize(FONT_SIZE);
+    }
 
     Image image;
     Image mur;
@@ -102,6 +137,7 @@ int main()
 
     app.SetFramerateLimit(200); // On limite le nombre d'image par seconde
 
+    timer.Start();
 
 
     //**************************
@@ -134,6 +170,8 @@ int main()
             }
         }
 
+        text.SetText(nb2String((int)timer.GetTime()));
+        text.SetPosition(1000, 100);
 
         app.Clear(Color(0,255,0));                  // On colore le fond de la fenêtre en vert
 
@@ -154,6 +192,7 @@ int main()
             ClicGauche = 0; // On passe la variable à non-appuyé
         }
 
+        app.Draw(text);
         app.Draw(sprite);
         for (int i=0 ; i<LONGUEUR_PLATEAU ; i++)
         {

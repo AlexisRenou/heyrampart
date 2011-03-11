@@ -19,6 +19,7 @@ class Plateau
     void afficher_plateau();
     bool colorier_case(int i,int j);
     void modifier_ocase(int i, int j);
+    void creer_types();
 };
 
 
