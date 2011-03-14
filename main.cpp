@@ -279,11 +279,11 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
             {
 
-                tableau.verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
-                tableau.verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
-                tableau.verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
-                tableau.verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
-                tableau.verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+                tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
                 test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }

@@ -1,39 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-<<<<<<< HEAD
-	<File name="main.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="3326" topLine="538" />
-=======
-	<File name="case.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="310" topLine="0" />
+	<File name="case.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="549" topLine="0" />
 	</File>
-	<File name="case.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="200" topLine="0" />
+	<File name="case.hpp" open="1" top="0" tabpos="7">
+		<Cursor position="471" topLine="0" />
 	</File>
-	<File name="constantes.hpp" open="1" top="0" tabpos="5">
-		<Cursor position="171" topLine="0" />
+	<File name="constantes.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="62" topLine="0" />
 	</File>
-	<File name="forme.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="101" topLine="0" />
+	<File name="forme.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="19470" topLine="712" />
 	</File>
-	<File name="forme.hpp" open="1" top="0" tabpos="6">
-		<Cursor position="399" topLine="0" />
+	<File name="forme.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="884" topLine="15" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="7957" topLine="295" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1790" topLine="50" />
 	</File>
-	<File name="plateau.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="240" topLine="0" />
+	<File name="plateau.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="448" topLine="0" />
 	</File>
-	<File name="plateau.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="316" topLine="0" />
-	</File>
-	<File name="timer.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="57" topLine="6" />
-	</File>
-	<File name="timer.hpp" open="1" top="0" tabpos="9">
-		<Cursor position="333" topLine="0" />
->>>>>>> f2cbff20e93b311677dd884dfe93d15f2dc06a97
+	<File name="plateau.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="135" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
