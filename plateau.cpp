@@ -895,3 +895,8 @@ bool Plateau::est_fermee(int i,int j)
     }
     return close;
 }
+
+Square Plateau::Get_Square(int i, int j)
+{
+    return p_square[i][j];
+}

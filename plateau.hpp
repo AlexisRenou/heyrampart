@@ -26,6 +26,7 @@ class Plateau
     forme MAJTableau(int NumeroForme, int MouseX, int MouseY, forme muraille, int aleatoire);
     void Verifier_fermement();
     bool est_fermee(int i,int j);
+    Square Get_Square(int i, int j);
 };
 
 

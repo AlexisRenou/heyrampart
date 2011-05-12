@@ -28,7 +28,7 @@ void Timer::Reinitialize()
 {
     myClock.Reset();
     Pause();
-    myElapsedTime = 0.0f;
+    myElapsedTime = 20;
 }
 
 float Timer::GetTime()

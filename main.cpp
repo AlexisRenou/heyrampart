@@ -50,6 +50,7 @@ RenderWindow app(VideoMode(TailleFenetre+200, TailleFenetre, 32), "Rampard ! ! !
 //Shape block;
 Plateau tableau;
 forme muraille = forme(Aleatoire(0,10));
+enum Etat {posemur, canon, combat};
 
 
 //******************************
@@ -99,9 +100,11 @@ int main()
     Image chato;
     Image image;
     Image mur;
+    Image canonimage;
     Sprite sprite;
     Sprite Mursprite;
     Sprite chatosprite;
+    Sprite canonsprite;
 
     if (!image.LoadFromFile("images/carte.png")) // Si le chargement du fichier a échoué
     {
@@ -121,7 +124,6 @@ int main()
         chatosprite.SetImage(chato);
     }
 
-
     if (!mur.LoadFromFile("images/rampart.png")) // Si le chargement du fichier a échoué
     {
         return EXIT_FAILURE; // On ferme le programme
@@ -129,6 +131,16 @@ int main()
     else // Si le chargement de l'image a réussi
     {
         Mursprite.SetImage(mur);
+    }
+    if (!canonimage.LoadFromFile("images/canon.png")) // Si le chargement du fichier a échoué
+    {
+        return EXIT_FAILURE; // On ferme le programme
+    }
+    else // Si le chargement de l'image a réussi
+    {
+        canonimage.CreateMaskFromColor(sf::Color(255,255,255),0);
+        canonsprite.SetImage(canonimage);
+        canonsprite.SetCenter(7.5,7.5);
     }
     sprite.Resize(900, 900);
 
@@ -141,6 +153,7 @@ int main()
 
 
     int i=0, j=0, ClicGauche=0; // Quelques variables necessaires par la suite
+    Etat JeuxRampart = posemur;
 
 
     // On initialise les différentes formes, (on trace les formes)
@@ -191,6 +204,58 @@ int main()
             }
         }
 
+        if((int)timer.GetTime() == 0)
+        {
+            if(JeuxRampart == posemur)
+            {
+                bool validation = false;
+
+                for (int i=21 ; i<28 ; i++)
+                {
+                    if(tableau.Get_Square(i,17).envoyer_type() == "close")
+                    {
+                        validation = true;
+                    }
+                }
+                for (int i=21 ; i<28 ; i++)
+                {
+                    if(tableau.Get_Square(i,24).envoyer_type() == "close")
+                    {
+                        validation = true;
+                    }
+                }
+                for (int j=18 ; j<23 ; j++)
+                {
+                    if(tableau.Get_Square(21,j).envoyer_type() == "close")
+                    {
+                        validation = true;
+                    }
+                }
+                for (int j=18 ; j<23 ; j++)
+                {
+                    if(tableau.Get_Square(28,j).envoyer_type() == "close")
+                    {
+                        validation = true;
+                    }
+                }
+                if(!(validation))
+                {
+                    goto GameOver;
+                }
+                JeuxRampart = canon;
+            }
+            else if(JeuxRampart == canon)
+            {
+                JeuxRampart = combat;
+            }
+            else if(JeuxRampart == combat)
+            {
+                JeuxRampart = posemur;
+            }
+            timer.Reinitialize();
+            timer.Start();
+        }
+
         text.SetText(nb2String((int)timer.GetTime()));
         text.SetPosition(TailleFenetre+50, 100);
         chatosprite.SetPosition(330, 270);
@@ -202,10 +267,18 @@ int main()
         {
             if(ClicGauche==0) // On vérifie si le bouton gauche est déjà enfoncé
             {
-                //MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
-                muraille = tableau.MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY(), muraille, Aleatoire(0,10));
-                ClicGauche = 1;                                                         // On passe la variable à appuyé
-                tableau.Verifier_fermement();
+                if(JeuxRampart == posemur)
+                {
+                    //MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
+                    muraille = tableau.MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY(), muraille, Aleatoire(0,10));
+                    ClicGauche = 1;                                                         // On passe la variable à appuyé
+                    tableau.Verifier_fermement();
+                }
+                else if(JeuxRampart == canon)
+                {
+                    tableau.Get_Square(input.GetMouseX()/TAILLE_CASE,input.GetMouseY()/TAILLE_CASE).modifier_type("canon");
+                    ClicGauche = 1;
+                }
 
             }
         }else
@@ -228,13 +301,20 @@ int main()
                     app.Draw(Mursprite);
                     //block.SetColor(sf::Color(100,100,100,100));
                 }
-                if (tableau.est_fermee(i,j))
+                if(JeuxRampart != combat)
                 {
-                    Block.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
-                    app.Draw(Block);
+                    if (tableau.est_fermee(i,j))
+                    {
+                        Block.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
+                        app.Draw(Block);
+                    }
+                }
+                if (tableau.Get_Square(i,j).envoyer_type() == "canon")
+                {
+                    canonsprite.SetPosition(i*TAILLE_CASE+7.5,j*TAILLE_CASE+7.5);
+                    app.Draw(canonsprite);
                 }
             }
-
         }
         //tableau.colorier_case(block,app);
 
@@ -242,7 +322,8 @@ int main()
         //{
             //AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
             //app.Draw(muraille.GetForme((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
-
+        if(JeuxRampart == posemur)
+        {
             if(muraille.IsRampart1())
             {
                 app.Draw(muraille.GetRampart1((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
@@ -263,6 +344,12 @@ int main()
             {
                 app.Draw(muraille.GetRampart5((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
+        }
+        if(JeuxRampart == canon)
+        {
+            canonsprite.SetPosition(((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE)+7.5,((input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE)+7.5);
+            app.Draw(canonsprite);
+        }
         //}
 
 
@@ -270,6 +357,13 @@ int main()
         app.Display();
     }
     return EXIT_SUCCESS;
+
+    GameOver:
+
+    app.Close();
+    cout << "Game Over ! ! ! ! !" << endl;
+
+    return 0;
 }
 
 
