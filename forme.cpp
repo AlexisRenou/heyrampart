@@ -4,6 +4,7 @@
 
 
 using namespace sf;
+using namespace std;
 
 forme::forme(int x)
 {

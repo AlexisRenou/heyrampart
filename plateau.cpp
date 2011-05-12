@@ -442,3 +442,456 @@ void Plateau::modifier_ocase(int i, int j)
 {
     p_square[i][j].modifier_occuper();
 }
+
+forme Plateau::MAJTableau(int NumeroForme, int MouseX, int MouseY, forme muraille, int aleatoire)
+{
+    switch(NumeroForme)
+    {
+        case 10:
+            if( verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+                verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+                verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
+                verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1) == false &&
+                verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            {
+
+                modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)+1);
+                modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
+                modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+                modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+                modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+                muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 9:
+            if(verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+                verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2) == false &&
+                verifier_case((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE+3) <= LONGUEUR_PLATEAU &&
+                verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
+                verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            {
+
+                modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+                modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+2);
+                modifier_ocase((MouseX/TAILLE_CASE)-1,(MouseY/TAILLE_CASE)-1);
+                modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+                modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+                muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 8:
+            if(verifier_case((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1) == false && (MouseX/TAILLE_CASE+3) <= LONGUEUR_PLATEAU && (MouseY/TAILLE_CASE-1) >= 0 &&
+                verifier_case((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE) == false &&
+                verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >=0 &&
+                verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+                verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) ==false)
+            {
+
+                modifier_ocase((MouseX/TAILLE_CASE)+2,(MouseY/TAILLE_CASE)-1);
+                modifier_ocase((MouseX/TAILLE_CASE)+2,MouseY/TAILLE_CASE);
+                modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+                modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+                modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+                muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 7:
+            if(verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-2) == false &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-3) == false && (MouseY/TAILLE_CASE-3) >= 0 &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false &&
+            verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
+            {
+
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-2);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-3);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 6:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 5:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 4:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1) == false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 3:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 2:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 1:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false &&
+            verifier_case((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE-1) >= 0 &&
+            verifier_case((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE) == false && (MouseX/TAILLE_CASE+2) <= LONGUEUR_PLATEAU &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1) == false && (MouseY/TAILLE_CASE-1) >= 0 &&
+            verifier_case(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1)== false && (MouseY/TAILLE_CASE+2) <= LONGUEUR_PLATEAU)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)-1,MouseY/TAILLE_CASE);
+            modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
+            modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+
+        case 0:
+            if(verifier_case(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE) == false)
+            {
+            modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
+
+            muraille.DefinirForme(aleatoire);  // On récupère une forme aléatoire
+            }
+            break;
+    }
+    return muraille;
+}
+
+void Plateau::Verifier_fermement()
+{
+    int tableau_tmp[LONGUEUR_PLATEAU][LONGUEUR_PLATEAU];
+    int i = 0;
+    int j = 0;
+
+    for (i;i<LONGUEUR_PLATEAU;i++)
+    {
+        for (j;j<LONGUEUR_PLATEAU;j++)
+        {
+            tableau_tmp[i][j] = 0;
+        }
+        j = 0;
+    }
+    //j = x , i = y
+    i = 0;
+    j = 0;
+
+    //initialisation !!!
+
+    for(i;i<LONGUEUR_PLATEAU;i++)
+    {
+        if(p_square[i][0].verifier_occupe() == false)
+        {
+            tableau_tmp[i][0] = 1;
+        }
+        if(p_square[i][LONGUEUR_PLATEAU-1].verifier_occupe() == false)
+        {
+            tableau_tmp[i][LONGUEUR_PLATEAU-1] = 1;
+        }
+    }
+
+    for(j;j<LONGUEUR_PLATEAU;j++)
+    {
+        if(p_square[0][j].verifier_occupe() == false)
+        {
+            tableau_tmp[0][j] = 1;
+        }
+        if(p_square[LONGUEUR_PLATEAU-1][j].verifier_occupe() == false)
+        {
+            tableau_tmp[LONGUEUR_PLATEAU-1][j] = 1;
+        }
+    }
+
+    // 1ère vague, gauche à droite !
+    j = 1;
+    for(j;j<LONGUEUR_PLATEAU;j++)
+    {
+        i = 0;
+        for(i;i<LONGUEUR_PLATEAU;i++)
+        {
+            if(i == 0)
+            {
+                if(((tableau_tmp[i][j-1] == 1) || (tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(i == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i-1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+        i--;
+        for(i;i>=0;i--)
+        {
+            if(i == 0)
+            {
+                if(((tableau_tmp[i][j-1] == 1) || (tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(i == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i-1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+    }
+
+    // 2ème vague, droite à gauche !
+    j = LONGUEUR_PLATEAU-2;
+    for(j;j>=0;j--)
+    {
+        i = 0;
+        for(i;i<LONGUEUR_PLATEAU;i++)
+        {
+            if(i == 0)
+            {
+                if(((tableau_tmp[i][j+1] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(i == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1) || (tableau_tmp[i-1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+        i--;
+        for(i;i>=0;i--)
+        {
+            if(i == 0)
+            {
+                if(((tableau_tmp[i][j+1] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(i == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1) || (tableau_tmp[i-1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i+1][j] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+    }
+
+    // 3ème vague, droite à gauche !
+    i = LONGUEUR_PLATEAU-2;
+    for(i;i>=0;i--)
+    {
+        j = 0;
+        for(j;j<LONGUEUR_PLATEAU;j++)
+        {
+            if(j == 0)
+            {
+                if(((tableau_tmp[i+1][j] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(j == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1) || (tableau_tmp[i][j-1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+        j--;
+        for(j;j>=0;j--)
+        {
+            if(j == 0)
+            {
+                if(((tableau_tmp[i+1][j] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(j == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1) || (tableau_tmp[i][j-1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i+1][j-1] == 1) || (tableau_tmp[i+1][j] == 1) || (tableau_tmp[i+1][j+1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+    }
+
+    // 4ème vague, haut en bas !
+    i = 1;
+    for(i;i<LONGUEUR_PLATEAU;i++)
+    {
+        j = 0;
+        for(j;j<LONGUEUR_PLATEAU;j++)
+        {
+            if(j == 0)
+            {
+                if(((tableau_tmp[i-1][j] == 1) || (tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(j == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i][j-1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+        j--;
+        for(j;j>=0;j--)
+        {
+            if(j == 0)
+            {
+                if(((tableau_tmp[i-1][j] == 1) || (tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(j == LONGUEUR_PLATEAU-1)
+            {
+                if(((tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i][j-1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+                {
+                    tableau_tmp[i][j] = 1;
+                }
+            }
+            else if(((tableau_tmp[i-1][j+1] == 1) || (tableau_tmp[i-1][j] == 1) || (tableau_tmp[i-1][j-1] == 1) || (tableau_tmp[i][j-1] == 1) || (tableau_tmp[i][j+1] == 1)) && (p_square[i][j].verifier_occupe() == false))
+            {
+                tableau_tmp[i][j] = 1;
+            }
+        }
+    }
+
+
+
+    j = 0;
+    i = 0;
+
+    for (i;i<LONGUEUR_PLATEAU;i++)
+    {
+        for (j;j<LONGUEUR_PLATEAU;j++)
+        {
+            if(tableau_tmp[i][j] == 0 && p_square[i][j].verifier_occupe() == false)
+            {
+                p_square[i][j].modifier_type("close");
+            }
+        }
+        j = 0;
+    }
+
+}
+
+bool Plateau::est_fermee(int i,int j)
+{
+    bool close = false;
+    if(p_square[i][j].envoyer_type() == "close")
+    {
+        close = true;
+    }
+    return close;
+}

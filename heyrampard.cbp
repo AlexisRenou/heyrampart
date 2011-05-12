@@ -35,6 +35,8 @@
 		<Unit filename="case.cpp" />
 		<Unit filename="case.hpp" />
 		<Unit filename="constantes.hpp" />
+		<Unit filename="fonction.cpp" />
+		<Unit filename="fonction.hpp" />
 		<Unit filename="forme.cpp" />
 		<Unit filename="forme.hpp" />
 		<Unit filename="main.cpp" />

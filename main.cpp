@@ -21,6 +21,7 @@
 #include "case.hpp"
 #include "plateau.hpp"
 #include "constantes.hpp"
+#include "fonction.hpp"
 
 
 //******************
@@ -35,18 +36,20 @@ using namespace std;
 //* Les prototypes des fonctions *
 //********************************
 
-void MAJTableau(int NumeroForme, int MouseX, int MouseY);
-int Aleatoire(int min, int max);
+//void MAJTableau(int NumeroForme, int MouseX, int MouseY);
+//int Aleatoire(int min, int max);
 
 
 //**************************
 //* Les variables globales *
 //**************************
 
-RenderWindow app(VideoMode(1100, 800, 32), "Rampard ! ! !");
-Shape block;
+int TailleFenetre = LONGUEUR_PLATEAU*TAILLE_CASE;
+
+RenderWindow app(VideoMode(TailleFenetre+200, TailleFenetre, 32), "Rampard ! ! !");
+//Shape block;
 Plateau tableau;
-forme test = forme(Aleatoire(0,10));
+forme muraille = forme(Aleatoire(0,10));
 
 
 //******************************
@@ -72,19 +75,25 @@ template <class T> string nb2String(T nb)
 
 int main()
 {
-    Timer timer;
+    Shape Block;
+    Block.AddPoint(0*TAILLE_CASE,0*TAILLE_CASE,Color(0,0,0,100));
+    Block.AddPoint(0*TAILLE_CASE,1*TAILLE_CASE,Color(0,0,0,100));
+    Block.AddPoint(1*TAILLE_CASE,1*TAILLE_CASE,Color(0,0,0,100));
+    Block.AddPoint(1*TAILLE_CASE,0*TAILLE_CASE,Color(0,0,0,100));
+
+    Timer timer = Timer(TEMPS_ROUND);
     tableau.creer_types();
 
     Font font;
     String text;
-    if(!font.LoadFromFile("digital-7.ttf", FONT_SIZE)) //, 30.0f))
+    if(!font.LoadFromFile("coopbl.ttf", FONT_SIZE)) //, 30.0f))
     {
         cerr<<"Erreur durant le chargement de la fonte"<<endl;
     }
     else
     {
         text.SetFont(font);
-        text.SetColor(Color::Red);
+        text.SetColor(Color::White);
         text.SetSize(FONT_SIZE);
     }
     Image chato;
@@ -128,7 +137,7 @@ int main()
     //********************************************************
 
 
-    srand(time(NULL)); // On initialise le random
+    //srand(time(NULL)); // On initialise le random
 
 
     int i=0, j=0, ClicGauche=0; // Quelques variables necessaires par la suite
@@ -140,11 +149,11 @@ int main()
     // le block d'une case  *
     //
 
-    block.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 0);
+   /* block.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 0);
     block.AddPoint(TAILLE_CASE * 0,TAILLE_CASE * 1);
     block.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 1);
     block.AddPoint(TAILLE_CASE * 1,TAILLE_CASE * 0);
-    block.SetColor(Color(100,100,100,100));
+    block.SetColor(Color(100,100,100,100));*/
 
 
     app.SetFramerateLimit(200); // On limite le nombre d'image par seconde
@@ -183,9 +192,9 @@ int main()
         }
 
         text.SetText(nb2String((int)timer.GetTime()));
-        text.SetPosition(1000, 100);
+        text.SetPosition(TailleFenetre+50, 100);
         chatosprite.SetPosition(330, 270);
-        app.Clear(Color(0,255,0));                  // On colore le fond de la fenêtre en vert
+        app.Clear(Color(0,0,0));                  // On colore le fond de la fenêtre en vert
 
         const Input & input = app.GetInput();       // input : référence constante
 
@@ -193,10 +202,10 @@ int main()
         {
             if(ClicGauche==0) // On vérifie si le bouton gauche est déjà enfoncé
             {
-                MAJTableau(test.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
-
+                //MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY());    // On met à jour le plateau du jeu
+                muraille = tableau.MAJTableau(muraille.GetIdForme(), input.GetMouseX(), input.GetMouseY(), muraille, Aleatoire(0,10));
                 ClicGauche = 1;                                                         // On passe la variable à appuyé
-                                                                                        // On récupère une forme aléatoire
+                tableau.Verifier_fermement();
 
             }
         }else
@@ -219,6 +228,11 @@ int main()
                     app.Draw(Mursprite);
                     //block.SetColor(sf::Color(100,100,100,100));
                 }
+                if (tableau.est_fermee(i,j))
+                {
+                    Block.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
+                    app.Draw(Block);
+                }
             }
 
         }
@@ -227,27 +241,27 @@ int main()
         //if(tableau[input.GetMouseX()/15][input.GetMouseY()/15] == 0)
         //{
             //AfficherForme(forme,input.GetMouseX(),input.GetMouseY());
-            //app.Draw(test.GetForme((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+            //app.Draw(muraille.GetForme((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
 
-            if(test.IsRampart1())
+            if(muraille.IsRampart1())
             {
-                app.Draw(test.GetRampart1((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+                app.Draw(muraille.GetRampart1((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
-            if(test.IsRampart2())
+            if(muraille.IsRampart2())
             {
-                app.Draw(test.GetRampart2((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+                app.Draw(muraille.GetRampart2((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
-            if(test.IsRampart3())
+            if(muraille.IsRampart3())
             {
-                app.Draw(test.GetRampart3((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+                app.Draw(muraille.GetRampart3((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
-            if(test.IsRampart4())
+            if(muraille.IsRampart4())
             {
-                app.Draw(test.GetRampart4((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+                app.Draw(muraille.GetRampart4((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
-            if(test.IsRampart5())
+            if(muraille.IsRampart5())
             {
-                app.Draw(test.GetRampart5((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
+                app.Draw(muraille.GetRampart5((input.GetMouseX()/TAILLE_CASE)*TAILLE_CASE,(input.GetMouseY()/TAILLE_CASE)*TAILLE_CASE));
             }
         //}
 
@@ -267,7 +281,7 @@ int main()
 //*****************************
 
 
-void MAJTableau(int NumeroForme, int MouseX, int MouseY)
+/*void MAJTableau(int NumeroForme, int MouseX, int MouseY)
 {
     switch(NumeroForme)
     {
@@ -285,7 +299,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -303,7 +317,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -321,7 +335,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
                 tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
                 tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-                test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+                muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -339,7 +353,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -354,7 +368,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,(MouseY/TAILLE_CASE)+1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -369,7 +383,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -384,7 +398,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -399,7 +413,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -414,7 +428,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase((MouseX/TAILLE_CASE)+1,MouseY/TAILLE_CASE);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -431,7 +445,7 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)-1);
             tableau.modifier_ocase(MouseX/TAILLE_CASE,(MouseY/TAILLE_CASE)+1);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
 
@@ -440,14 +454,15 @@ void MAJTableau(int NumeroForme, int MouseX, int MouseY)
             {
             tableau.modifier_ocase(MouseX/TAILLE_CASE,MouseY/TAILLE_CASE);
 
-            test.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
+            muraille.DefinirForme(Aleatoire(0,10));  // On récupère une forme aléatoire
             }
             break;
     }
-}
+}*/
 
-
+/*
 int Aleatoire(int min, int max)
 {
-    return (min + int( double( rand() ) / ( double( RAND_MAX)  ) * (max + 1) ));
-}
+    int alea = (min + int( double( rand() ) / ( double( RAND_MAX ) ) * (max + 1) ));
+    return alea;
+}*/

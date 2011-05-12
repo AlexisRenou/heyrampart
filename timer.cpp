@@ -1,7 +1,10 @@
 #include "Timer.hpp"
 
-Timer::Timer() : myElapsedTime(15), myState(Paused)
-{}
+Timer::Timer(int Temps)
+{
+    myElapsedTime = Temps;
+    myState = Paused;
+}
 
 void Timer::Start()
 {

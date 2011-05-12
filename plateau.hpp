@@ -5,9 +5,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
+//#include <time.h>
 #include "case.hpp"
 #include "constantes.hpp"
+#include "forme.hpp"
+//#include "fonction.hpp"
 
 class Plateau
 {
@@ -21,6 +23,9 @@ class Plateau
     bool verifier_case(int i,int j);
     void modifier_ocase(int i, int j);
     void creer_types();
+    forme MAJTableau(int NumeroForme, int MouseX, int MouseY, forme muraille, int aleatoire);
+    void Verifier_fermement();
+    bool est_fermee(int i,int j);
 };
 
 
